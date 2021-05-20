@@ -1,0 +1,50 @@
+$azadSecondary: #8e9bd6;
+$azadPrimary: #2156ae;
+$azadNormalText: #343434;
+$azadDarkText: #131313;
+$azadInvertText: #fafafa;
+.inputHolder {
+  margin-bottom: 16px;
+  span {
+    font-size: 12px;
+    position: relative;
+    i{
+      color: $azadPrimary;
+      font-size: 16px;
+      margin-left: 8px;
+    }
+  }
+  .inputWraper{
+    position: relative;
+    label{
+      text-align: left;
+      font-size: 12px;
+    }
+    input[type='number'], input[type='password'], input[type='text'], textarea{
+      outline: none;
+      -webkit-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      user-select: auto;
+      border: solid 2px $azadSecondary;
+      padding: 3px 12px !important;
+      text-align: left !important;
+      margin: 8px 0px 8px 0 !important;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0px;
+      width: 100%;
+      border-radius: 4px;
+      color: $azadDarkText;
+      resize: none;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    input[type='number']:disabled, input[type='password']:disabled, input[type='text']:disabled{
+      font-size: 14px;
+      opacity: 1;
+    }
+    textarea {
+      max-height: 340px !important;
+    }
+  }
+}
