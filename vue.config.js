@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
-    name: 'پنل مدیریت ریمیک :: Rimik admin panel',
+    name: 'Autoactiva Co. Chrome Key Remover',
     themeColor: '#61187A',
     msTileColor: '#61187A',
     manifestOptions: {
