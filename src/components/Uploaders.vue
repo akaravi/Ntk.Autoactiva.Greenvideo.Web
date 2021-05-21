@@ -102,8 +102,26 @@
           </div>
         </keep-alive>
         <keep-alive>
-          <div class="growFull fRow jCenter aCenter" v-if="saveVideo">
-            <a :href="`${baseURL}/videos/${videoSrc}`" class="get fRow jCenter aCenter">
+          <div class="growFull fRow jCenter aCenter" v-if="saveVideoError">
+            <div class="get fRow jCenter aCenter">
+                Your video in converting have error try again.
+
+            </div>
+          </div>
+        </keep-alive>
+        <keep-alive>
+          <div class="growFull fRow jCenter aCenter" v-if="saveVideoInConvert">
+            <div class="get fRow jCenter aCenter">
+              Your Video In Converting To Transparent Webm Video.
+             <br>
+               Please wait a few minutes ...
+            </div>
+          </div>
+        </keep-alive>
+        <keep-alive>
+          <div class="growFull fRow jCenter aCenter" v-if="saveVideoToDownload">
+            <a :href="`${baseURL}/videos/${videoSrc}`" target="_blank"
+             class="get fRow jCenter aCenter">
               <i class="material-icons-round" style="margin-right: 8px">get_app</i>
               Download your video
             </a>
@@ -197,6 +215,9 @@ export default {
       baseURL: this.$store.state.baseUrl,
       V: this.$store.state.apiVersion,
       lastFile: null,
+      saveVideoError: false,
+      saveVideoInConvert: false,
+      saveVideoToDownload: false,
     };
   },
   methods: {
@@ -549,6 +570,7 @@ export default {
       return this.CryptoJS.MD5(this.test).toString();
     },
     completeUpload() {
+      this.saveVideoInConvert = true;
       const b = axios({
         method: 'get',
         url: `${this.baseURL}/api/Uploads/compelete`,
@@ -569,14 +591,29 @@ export default {
         this.uploading = false;
         if (response.data.isSuccess) {
           this.videoSrc = response.data.data;
+          //
+          this.saveVideoInConvert = false;
+          this.saveVideoToDownload = true;
+          this.saveVideoError = false;
+          //
         } else {
-          this.makeToast('info', 'خطا در آپلود', 2000);
+          //
+          this.saveVideoInConvert = false;
+          this.saveVideoToDownload = false;
+          this.saveVideoError = true;
+          //
+          this.makeToast('info', 'Error On Upload Video', 2000);
         }
       }, (error) => {
+        //
+        this.saveVideoInConvert = false;
+        this.saveVideoToDownload = false;
+        this.saveVideoError = true;
+        //
         this.makeToast('error', this.errorHandler(error), 3000);
       });
       b.catch(() => {
-        this.makeToast('info', 'آپلود ویدئو متوقف شد', 4000);
+        this.makeToast('info', 'Stop Upload Video', 4000);
       });
     },
     createChunks() {

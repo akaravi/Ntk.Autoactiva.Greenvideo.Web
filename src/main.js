@@ -19,7 +19,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 //  import App from './App.vue'
-import 'vue-cool-select/dist/themes/material-design.scss';
+import 'vue-cool-select/dist/themes/material-design.css';
 // you can also import your theme
 Vue.use(VuePersianDatetimePicker, {
   name: 'date-picker',

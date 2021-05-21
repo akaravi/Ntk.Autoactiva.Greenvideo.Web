@@ -79,8 +79,8 @@ export default {
   overflow: auto;
 
   .header {
-    padding: 24px;
-    height: 264px;
+    padding: 10px;
+    height: 100px;
     z-index: 100;
     h2 {
       font-size: 32px;
@@ -99,7 +99,7 @@ export default {
 
   .formsHolder {
     background-color: white;
-    padding: 24px;
+    padding: 10px;
     overflow: hide auto;
   }
 
